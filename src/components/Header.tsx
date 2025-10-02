@@ -8,7 +8,7 @@ export default function Header() {
   const isHome = useMemo(() => pathname === '/' ,[pathname])
 
   return (
-    <header className="bg-slate-800">
+    <header className={ isHome ? "bg-[url(./bg.jpg)] bg-cover bg-center" : "bg-slate-800" }>
       <div className="mx-auto px-5 py-16 container">
         <div className="flex justify-between items-center">
           <div>
