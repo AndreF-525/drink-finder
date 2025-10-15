@@ -11,7 +11,8 @@ export type RecipeSliceType = {
 export const createRecipeSlice : StateCreator<RecipeSliceType> = () => ({
   categories: [],
   fetchCategories: async () => {
-    getCategories()
+    const categories = await getCategories()
+    console.log(categories)
   }
   
 })
