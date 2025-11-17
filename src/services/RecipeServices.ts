@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CategoriesAPIResponseSchema } from '../schemas/recipes-schema'
+import { CategoriesAPIResponseSchema, DrinksAPIResponse } from '../schemas/recipes-schema'
 import type { SearchFilter } from '../types'
 
 export async function getCategories() {
@@ -16,5 +16,8 @@ export async function getCategories() {
 export async function getRecipes(searchFilters : SearchFilter) {
   const url = `https://thecocktaildb.com/api/json/v1/1/filter.php?c=${searchFilters.category}&i=${searchFilters.ingredient}`
   const { data } = await axios(url)
-  console.log(data)
+  const result = DrinksAPIResponse.safeParse(data)
+  if (result.success) {
+    return result.data
+  }
 }
